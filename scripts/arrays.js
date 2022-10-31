@@ -22,7 +22,7 @@ function timeParity(cb) {
 }
 
 function dataLocationFromParity(p) {
-  return locationOfData.replace('data.', `data-${p}.`);
+  return locationOfData.replace("data.", `data-${p}.`);
 }
 
 //callback version
@@ -86,6 +86,9 @@ function handleCourseDetails() {
   const structuredData = JSON.parse(this.responseText);
   // console.log("detailed course info", structuredData);
 
+  // i cut the remainder of this function body from elsewhere and pasted it
+  // in this function so that it would run after the course details were loaded
+
   let resultOfTP;
   timeParity(function (val) {
     console.log("val", val);
@@ -95,6 +98,9 @@ function handleCourseDetails() {
   // here because it gets the value asynchronously
   // instead we need to ensure we only use it AFTER the function we gave to
   // timeParity has been invoked
+
+  // so as above, you'll need to cut the below and paste it elsewhere at a place
+  // where we know that timeParity has been invoked
 
   console.log(
     "dataLocationFromParity(resultOfTP)",
@@ -179,4 +185,3 @@ function updateCount() {
   const countValue = filteredCourses.length;
   count.innerText = `${countValue} items`;
 }
-
